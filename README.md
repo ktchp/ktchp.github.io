@@ -3,8 +3,10 @@
 This tool is a solution to the problem of not being able to use the QCFv4 Font on video editing software directly.
 The text gets rendered onto a transparent .png, ready to be put into your video!
 
-You can choose between Light, Sepia & Dark for the Quran Text.
-You are also able to render Surah Names and Symbols.
+You can choose between **Light, Sepia & Dark** for the **Quran Text**.
+You are also able to render **Surah Names and Symbols**.
+
+https://ktchp.github.io/
 
 # All input files: #
 
