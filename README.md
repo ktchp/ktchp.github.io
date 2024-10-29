@@ -1,20 +1,39 @@
-# Quran Glyph Renderer (QCFv4 Tajweed) #
+# Quran Glyph Renderer (QCFv4 Tajweed)
 
-This tool is a solution to the problem of not being able to use the QCFv4 Font on video editing software directly.
-The text gets rendered onto a transparent .png, ready to be put into your video!
+## Overview
 
-You can choose between **Light, Sepia & Dark** for the **Quran Text**.
-You are also able to render **Surah Names and Symbols**.
+The **Quran Glyph Renderer** solves the challenge of using the QCFv4 Font for Quranic text and symbols in video editing software. This tool renders selected Quranic text or symbols onto a transparent `.png`, ready for seamless integration into video projects.
 
-https://ktchp.github.io/
+You can choose between three color themes—**Light, Sepia, and Dark**—for Quran text, and also render **Surah Names** and **Symbols** as needed.
 
-# All input files: #
+## **Try it out here:** [Quran Glyph Renderer](https://ktchp.github.io/) ##
 
-## Quran Text ##
-`resources` > `KFGQPC V4 Uthmani Hafs Tajweed Digital.docx`
+## Features
 
-## Surah Glyphs ##
-`resources` > `Surah Names.xlsx`
+- Render **Quran Text**, **Surah Names**, or **Symbols** onto transparent backgrounds
+- Choose from three distinct font colors: **Light**, **Sepia**, or **Dark**
+- Adjustable **canvas dimensions** for custom output sizes
+- Simple **save-to-PNG** option for easy export
 
-## Quran, Makkan & Madani Symbols ##
-`resources` > `MakkiMadani.docx`
+## Usage
+
+1. **Select Content to Render**:
+   - Choose from **Quran Text**, **Surah Names**, or **Symbols**.
+2. **Choose Font Color**:
+   - Options include **Dark**, **Light**, or **Sepia**.
+3. **Copy Text**:
+   - For **Quran Text**, select and copy text from the provided input file. If rendering Quran text, enter the **corresponding page number** as well.
+4. **Adjust Canvas Size (Optional)**:
+   - Default canvas dimensions are set to 1500px (width) x 500px (height), but you can customize these as needed.
+5. **Render Glyphs**:
+   - Click "Render Glyphs" to preview.
+6. **Save as PNG**:
+   - Once satisfied, click on "Save as PNG" for final output.
+
+## Input Files
+
+You can find all necessary resources in the `resources` folder:
+
+- **Quran Text**: `KFGQPC V4 Uthmani Hafs Tajweed Digital.docx`
+- **Surah Names**: `Surah Names.xlsx`
+- **Symbols (Makkan & Madani)**: `MakkiMadani.docx`
