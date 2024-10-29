@@ -9,10 +9,10 @@ You are also able to render Surah Names and Symbols.
 # All input files: #
 
 ## Quran Text ##
-`qcf4 png converter\resources` > `KFGQPC V4 Uthmani Hafs Tajweed Digital.docx`
+`resources` > `KFGQPC V4 Uthmani Hafs Tajweed Digital.docx`
 
 ## Surah Glyphs ##
-`qcf4 png converter\resources` > `Surah Names.xlsx`
+`resources` > `Surah Names.xlsx`
 
 ## Quran, Makkan & Madani Symbols ##
-`qcf4 png converter\resources` > `MakkiMadani.docx`
+`resources` > `MakkiMadani.docx`
