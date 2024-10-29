@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="57x57" href="resources/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="resources/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="resources/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="resources/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="resources/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="resources/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="resources/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="resources/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="resources/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="resources/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="resources/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <title>Quran Glyph Renderer (.png)</title>
+    <style>
+        @font-face {
+            font-family: 'QuranFont';
+            src: url('');
+            /* This will be dynamically set by JavaScript */
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(135deg, #003300, #006600);
+            /* Dark green gradient */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        header {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        select,
+        input[type="text"],
+        button {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 2px solid #005500;
+            outline: none;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        select:focus,
+        input[type="text"]:focus {
+            border-color: #007700;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        button {
+            background-color: #005500;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+            /* Remove border */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background-color: #007700;
+            /* Lighter green on hover */
+        }
+
+        canvas {
+            background-color: black;
+            margin-top: 20px;
+            border: 2px solid #005500;
+            /* Green border */
+            border-radius: 5px;
+            /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #ddd;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>Quran Glyph Renderer (.png)</header>
+
+    <h1>السلام عليكم ورحمة الله وبركاته</h1>
+    <h2>This tool is a solution to the problem of not being able to use the QCFv4 Font for video editing software. <br>
+        The text gets rendered onto a transparent .png, ready to be put into your video!</h2>
+
+    <select id="renderOption">
+        <option value="" selected disabled>Select Quran, Surah, or Symbol</option>
+        <option value="quran">Quran</option>
+        <option value="surah">Surah</option>
+        <option value="symbol">Symbol</option>
+    </select>
+
+    <div id="quranInputs" style="display:none;">
+        <input type="text" id="fontNumber" placeholder="Enter Qur'an Page (1 to 604)" />
+        <input type="text" id="glyphInput" placeholder="Enter glyphs (e.g. from the .docx)" />
+    </div>
+
+    <div id="surahInput" style="display:none;">
+        <input type="text" id="glyphSurah" placeholder="Enter Surah Number" />
+    </div>
+
+    <div id="symbolInput" style="display:none;">
+        <select id="symbolOption">
+            <option value="" selected disabled>Select Symbol</option>
+            <option value="makkan">Makkan (ﲊ)</option>
+            <option value="medinan">Medinan (ﲍ)</option>
+            <option value="alQuran">Al-Quran (ﲐ)</option>
+        </select>
+    </div>
+
+    <h3>Font Color:</h3>
+    <select id="colorOption">
+        <option value="dark" selected>Dark</option>
+        <option value="light">Light</option>
+        <option value="sepia">Sepia</option>
+    </select>
+
+    <h3>Canvas Size:</h3>
+    <input type="text" id="canvasWidth" placeholder="Width (e.g. 3000)" />
+    <input type="text" id="canvasHeight" placeholder="Height (e.g. 1000)" />
+
+    <button id="renderBtn">Render Glyphs</button>
+    <canvas id="glyphCanvas"></canvas>
+    <br>
+    <button id="saveBtn" style="display:none;">Save as PNG</button>
+
+    <footer>made with ChatGPT by ktchp 2024</footer>
+
+    <script>
+        document.getElementById('renderOption').addEventListener('change', function () {
+            const selectedValue = this.value;
+            document.getElementById("quranInputs").style.display = selectedValue === "quran" ? "block" : "none";
+            document.getElementById("surahInput").style.display = selectedValue === "surah" ? "block" : "none";
+            document.getElementById("symbolInput").style.display = selectedValue === "symbol" ? "block" : "none";
+        });
+    
+        document.getElementById('renderBtn').addEventListener('click', function () {
+            const canvas = document.getElementById("glyphCanvas");
+            const ctx = canvas.getContext("2d");
+    
+            // Set canvas dimensions based on input values or use default values
+            let dpi = window.devicePixelRatio || 1;
+            const canvasWidthInput = document.getElementById("canvasWidth").value;
+            const canvasHeightInput = document.getElementById("canvasHeight").value;
+    
+            const canvasWidth = canvasWidthInput ? parseInt(canvasWidthInput) : 1500; // Default width
+            const canvasHeight = canvasHeightInput ? parseInt(canvasHeightInput) : 500; // Default height
+    
+            canvas.width = canvasWidth * dpi;  // Adjust canvas size for high-DPI screens
+            canvas.height = canvasHeight * dpi;
+            canvas.style.width = `${canvasWidth}px`;  // Set the CSS width (visible size)
+            canvas.style.height = `${canvasHeight}px`;
+            ctx.scale(dpi, dpi);  // Scale the context for high-DPI
+    
+            // Clear the canvas to ensure a transparent background
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas for transparency
+    
+            // Get the glyph input based on the selected option
+            const selectedOption = document.getElementById("renderOption").value;
+            let glyphs = '';
+            let fontPath = '';
+            const colorOption = document.getElementById("colorOption").value;
+    
+            if (selectedOption === "quran") {
+                const fontNumber = document.getElementById("fontNumber").value.padStart(3, '0'); // Add leading zeros
+                glyphs = document.getElementById("glyphInput").value;
+                fontPath = `fonts/${colorOption}/QCF4${fontNumber}_COLOR-Regular.ttf`;
+            } else if (selectedOption === "surah") {
+                const glyphSurah = document.getElementById("glyphSurah").value;
+                glyphs = glyphSurah;
+                fontPath = `fonts/${colorOption}/QCF_FullSurah-Regular.ttf`;
+            } else if (selectedOption === "symbol") {
+                glyphs = document.getElementById("symbolOption").value;
+                fontPath = `fonts/${colorOption}/QCF4001_COLOR-Regular.ttf`;
+            }
+    
+            // Load the selected font
+            const newFont = new FontFace('QuranFont', `url(${fontPath})`);
+            newFont.load().then(function (loadedFont) {
+                document.fonts.add(loadedFont);
+    
+                // Set initial font properties
+                let fontSize = 120;
+                let lineHeight = fontSize + 95; // Adjust this value for more or less line spacing
+                ctx.font = `${fontSize}px 'QuranFont'`;
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillStyle = "white"; // Set text color
+    
+                // Word wrap logic
+                const maxWidth = canvasWidth * dpi;
+                const words = glyphs.split(' ');
+                const lines = [];
+                let currentLine = '';
+                const padding = 10; // Padding between lines
+    
+                words.forEach((word) => {
+                    const testLine = currentLine + word + ' ';
+                    const metrics = ctx.measureText(testLine);
+                    const testWidth = metrics.width;
+    
+                    if (testWidth > maxWidth && currentLine) {
+                        lines.push(currentLine);
+                        currentLine = word + ' ';
+                    } else {
+                        currentLine = testLine;
+                    }
+                });
+                lines.push(currentLine); // Add the last line
+    
+                // Calculate vertical positioning
+                const totalHeight = lines.length * lineHeight; // Total height of all lines
+                const startY = (canvas.height / dpi - totalHeight) / 2; // Center vertically
+    
+                // Render each line to the canvas with additional padding
+                lines.forEach((line, index) => {
+                    ctx.fillText(line.trim(), (canvas.width / dpi) / 2, startY + (index * lineHeight) + (lineHeight / 2));
+                });
+    
+                // Show save button
+                document.getElementById("saveBtn").style.display = "inline-block";
+            }).catch(function (error) {
+                console.error("Error loading font:", error);
+            });
+        });
+    
+        // Save the canvas as a PNG file
+        document.getElementById('saveBtn').addEventListener('click', function () {
+            const canvas = document.getElementById("glyphCanvas");
+            const link = document.createElement('a');
+            link.download = 'quran_glyph.png';
+            link.href = canvas.toDataURL('image/png', 1.0); // Ensure PNG format with full quality
+            link.click();
+        });
+    </script>
+    
+
+
+</body>
+
+</html>
