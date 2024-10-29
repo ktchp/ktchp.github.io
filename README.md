@@ -1,5 +1,7 @@
 # Quran Glyph Renderer (QCFv4 Tajweed)
 
+# Important: this only works on browsers that support **OT-SVG** Fonts (e.g. Firefox) as of now! #
+
 ## Overview
 
 The **Quran Glyph Renderer** solves the challenge of using the QCFv4 Font for Quranic text and symbols in video editing software. This tool renders selected Quranic text or symbols onto a transparent `.png`, ready for seamless integration into video projects.
