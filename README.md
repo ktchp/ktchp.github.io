@@ -1,6 +1,11 @@
 # Quran Glyph Renderer (QCFv4 Tajweed)
 
-# Important: this only works on browsers that support **OT-SVG** Fonts (e.g. Firefox) as of now! #
+# IMPORTANT: this only works on browsers that support **OT-SVG** Fonts (e.g. Firefox) as of now! #
+Firefox for [Desktop](https://www.mozilla.org/en-US/firefox/new/)
+
+Firefox for [Android](https://www.mozilla.org/en-US/firefox/browsers/mobile/android/)
+
+Firefox for [iOS](https://www.mozilla.org/en-US/firefox/browsers/mobile/ios/)
 
 ## Overview
 
