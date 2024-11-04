@@ -1,0 +1,160 @@
+@font-face {
+    font-family: 'QuranFont';
+    src: url('');
+    /* This will be dynamically set by JavaScript */
+}
+
+body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: linear-gradient(135deg, #003300, #006600);
+    /* Dark green gradient */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+header {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+select,
+input[type="text"],
+button {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 250px;
+    border-radius: 5px;
+    border: 2px solid #005500;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+select:focus,
+input[type="text"]:focus {
+    border-color: #007700;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+button {
+    background-color: #005500;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+    /* Remove border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background-color: #007700;
+    /* Lighter green on hover */
+}
+
+canvas {
+    background-color: black;
+    margin-top: 20px;
+    border: 2px solid #005500;
+    /* Green border */
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #ddd;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Make the canvas responsive */
+canvas {
+    max-width: 100%;
+    height: auto;
+    /* Maintains aspect ratio */
+    border: 2px solid #005500;
+    /* Green border as before */
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    /* Box shadow */
+    margin-top: 20px;
+}
+
+/* For smaller screens */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+        /* Adjust padding for smaller view */
+    }
+
+    /* Adjust canvas margins and border for mobile */
+    canvas {
+        margin-top: 10px;
+        border-width: 1px;
+    }
+
+    /* Adjust font sizes on mobile */
+    header {
+        font-size: 1.4em;
+    }
+
+    h1,
+    h2 {
+        font-size: 1.2em;
+    }
+
+    select,
+    input[type="text"],
+    button {
+        padding: 10px;
+        font-size: 16px;
+        width: 90%;
+        /* Limit input width to 90% of container */
+        max-width: 300px;
+        /* Set a max width for larger screens */
+        margin: 8px auto;
+        /* Center align inputs */
+        border-radius: 5px;
+        border: 2px solid #005500;
+        outline: none;
+        transition: border-color 0.3s, background-color 0.3s;
+        display: block;
+        /* Ensures they are centered in the container */
+    }
+
+    select,
+    input[type="text"],
+    button {
+        font-size: 14px;
+        padding: 8px;
+        width: 100%;
+        /* Full width for better usability */
+        margin-bottom: 8px;
+
+        select,
+        input[type="text"],
+        button {
+            font-size: 14px;
+            padding: 8px;
+            width: 90%;
+            /* Keep a smaller width for readability */
+            max-width: 250px;
+            /* Slightly smaller max width on mobile */
+        }
+    }
+}
