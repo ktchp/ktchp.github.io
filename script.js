@@ -5,7 +5,7 @@ document.getElementById('renderOption').addEventListener('change', function () {
     document.getElementById("quranInputs").style.display = selectedValue === "quran" ? "block" : "none";
     document.getElementById("surahInput").style.display = selectedValue === "surah" ? "block" : "none";
     document.getElementById("symbolInput").style.display = selectedValue === "symbol" ? "block" : "none";
-    document.getElementById("makkiMadaniInput").style.display = selectedValue === "makkiMadani" ? "block" : "none";
+    document.getElementById("bismillahInput").style.display = selectedValue === "bismillah" ? "block" : "none";
 });
 
 document.getElementById('renderBtn').addEventListener('click', function () {
@@ -36,34 +36,31 @@ document.getElementById('renderBtn').addEventListener('click', function () {
     const colorOption = document.getElementById("colorOption").value;
 
     if (selectedOption === "quran") {
-        const fontNumber = document.getElementById("fontNumber").value;
+        const fontNumber = document.getElementById("fontNumber").value.padStart(3, '0'); // Add leading zeros
         glyphs = document.getElementById("glyphInput").value;
-<<<<<<< HEAD
-        if (glyphs.toLowerCase() === "bsml") {
-            fontPath = `fonts/${colorOption}/QCF_Bismillah_COLOR-Regular.ttf`;
-        } else {
-            fontPath = `fonts/${colorOption}/QCF4${fontNumber.padStart(3, '0')}_COLOR-Regular.ttf`;
-        }
-=======
         fontPath = `fonts/${colorOption}/QCF4${fontNumber}_COLOR-Regular.ttf`;
->>>>>>> parent of 05aec10 (Update script.js)
     } else if (selectedOption === "surah") {
         const glyphSurah = document.getElementById("glyphSurah").value;
         glyphs = glyphSurah;
         fontPath = `fonts/${colorOption}/QCF_FullSurah-Regular.ttf`;
     } else if (selectedOption === "symbol") {
-        glyphs = document.getElementById("symbolOption").value;
-        fontPath = `fonts/${colorOption}/QCF4001_COLOR-Regular.ttf`;
-    } else if (selectedOption === "makkiMadani") {
-        const makkiMadaniOption = document.getElementById("makkiMadaniOption").value;
-        if (makkiMadaniOption === "Makkan") {
+        const symbolOption = document.getElementById("symbolOption").value;
+        if (symbolOption === "makkan") {
             glyphs = "ﲊ";
-        } else if (makkiMadaniOption === "Medinan") {
+            fontPath = `fonts/${colorOption}/QCF_MakkiMadani_COLOR-Regular.ttf`;
+        } else if (symbolOption === "medinan") {
             glyphs = "ﲍ";
-        } else if (makkiMadaniOption === "Al Quran") {
+            fontPath = `fonts/${colorOption}/QCF_MakkiMadani_COLOR-Regular.ttf`;
+        } else if (symbolOption === "alQuran") {
             glyphs = "ﲐ";
+            fontPath = `fonts/${colorOption}/QCF_MakkiMadani_COLOR-Regular.ttf`;
+        } else {
+            glyphs = symbolOption;
+            fontPath = `fonts/${colorOption}/QCF4001_COLOR-Regular.ttf`;
         }
-        fontPath = `fonts/${colorOption}/QCF_MakkiMadani_COLOR-Regular.ttf`;
+    } else if (selectedOption === "bismillah") {
+        glyphs = document.getElementById("bismillahGlyphInput").value;
+        fontPath = `fonts/${colorOption}/QCF_Bismillah_COLOR-Regular.ttf`;
     }
 
     // Load the selected font
