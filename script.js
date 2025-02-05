@@ -37,7 +37,11 @@ document.getElementById('renderBtn').addEventListener('click', function () {
     if (selectedOption === "quran") {
         const fontNumber = document.getElementById("fontNumber").value.padStart(3, '0'); // Add leading zeros
         glyphs = document.getElementById("glyphInput").value;
-        fontPath = `fonts/${colorOption}/QCF4${fontNumber}_COLOR-Regular.ttf`;
+        if (glyphs.toLowerCase() === "bsml") {
+            fontPath = `fonts/${colorOption}/QCF_Bismillah_COLOR-Regular.ttf`;
+        } else {
+            fontPath = `fonts/${colorOption}/QCF4${fontNumber}_COLOR-Regular.ttf`;
+        }
     } else if (selectedOption === "surah") {
         const glyphSurah = document.getElementById("glyphSurah").value;
         glyphs = glyphSurah;
