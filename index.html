@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="resources/icon/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="resources/icon/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="resources/icon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="resources/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="resources/icon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="resources/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="resources/icon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -23,57 +22,63 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">    
-    <link rel="stylesheet" href="style.css">
-    <title>Quran Glyph Renderer (QCF4)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+   <link rel="stylesheet" href="style.css">
+
+    <title>Quran Glyph Renderer (.png)</title>
 </head>
+    
 <body>
     <header>Quran Glyph Renderer (QCFv4)
-        <h4>How to use: <a href="https://github.com/ktchp/ktchp.github.io">Github</a></h4>
+        <h4>How to use: <a href="https://github.com/ktchp/ktchp.github.io#">Github</a></h4>
     </header>
 
-    <select id="renderOption">
-        <option value="" selected disabled>Select Quran, Surah, or Symbol</option>
-        <option value="quran">Quran</option>
-        <option value="surah">Surah</option>
-        <option value="symbol">Symbol</option>
+<select id="renderOption">
+    <option value="" selected disabled>Select Quran, Surah, or Symbol</option>
+    <option value="quran">Quran</option>
+    <option value="surah">Surah</option>
+    <option value="symbol">Symbol</option>
+    <option value="bismillah">Bismillah</option>
+</select>
+
+<div id="quranInputs" style="display:none;">
+    <input type="text" id="fontNumber" placeholder="Enter Qur'an Page (1 to 604)" />
+    <input type="text" id="glyphInput" placeholder="Enter glyphs (e.g. from the .docx)" />
+</div>
+
+<div id="surahInput" style="display:none;">
+    <input type="text" id="glyphSurah" placeholder="Enter Surah Number" />
+</div>
+
+<div id="symbolInput" style="display:none;">
+    <select id="symbolOption">
+        <option value="" selected disabled>Select Symbol</option>
+        <option value="makkan">Makkan (ﲊ)</option>
+        <option value="medinan">Medinan (ﲍ)</option>
+        <option value="alQuran">Al-Quran (ﲐ)</option>
     </select>
+</div>
 
-    <div id="quranInputs" style="display:none;">
-        <input type="text" id="fontNumber" placeholder="Enter Qur'an Page (1 to 604)" />
-        <input type="text" id="glyphInput" placeholder="Enter glyphs (e.g. from the .docx)" />
-    </div>
+<div id="bismillahInput" style="display:none;">
+    <input type="text" id="bismillahGlyphInput" placeholder="Enter Bismillah glyphs">
+</div>
 
-    <div id="surahInput" style="display:none;">
-        <input type="text" id="glyphSurah" placeholder="Enter Surah Number" />
-    </div>
+<h3>Font Color:</h3>
+<select id="colorOption">
+    <option value="dark" selected>Dark</option>
+    <option value="light">Light</option>
+    <option value="sepia">Sepia</option>
+</select>
 
-    <div id="symbolInput" style="display:none;">
-        <select id="symbolOption">
-            <option value="" selected disabled>Select Symbol</option>
-            <option value="makkan">Makkan (ﲊ)</option>
-            <option value="medinan">Medinan (ﲍ)</option>
-            <option value="alQuran">Al-Quran (ﲐ)</option>
-        </select>
-    </div>
+<h3>Canvas Size:</h3>
+<input type="text" id="canvasWidth" placeholder="Width (e.g. 3000)" />
+<input type="text" id="canvasHeight" placeholder="Height (e.g. 1000)" />
 
-    <h3>Font Color:</h3>
-    <select id="colorOption">
-        <option value="dark" selected>Dark</option>
-        <option value="light">Light</option>
-        <option value="sepia">Sepia</option>
-    </select>
-
-    <h3>Canvas Size:</h3>
-    <input type="text" id="canvasWidth" placeholder="Width (default 1500px)" />
-    <input type="text" id="canvasHeight" placeholder="Height (default 500px)" />
-
-    <button id="renderBtn">Render Glyphs</button>
-    <canvas id="glyphCanvas"></canvas>
-    <br>
-    <button id="saveBtn" style="display:none;">Save as PNG</button>
-
-    <footer>made with ChatGPT by ktchp 2024</footer>
-    <script src="script.js"></script>
+<button id="renderBtn">Render Glyphs</button>
+<canvas id="glyphCanvas"></canvas>
+<br>
+<button id="saveBtn" style="display:none;">Save as PNG</button>
+<script src="script.js"></script>
 </body>
 </html>
