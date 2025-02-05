@@ -38,11 +38,15 @@ document.getElementById('renderBtn').addEventListener('click', function () {
     if (selectedOption === "quran") {
         const fontNumber = document.getElementById("fontNumber").value;
         glyphs = document.getElementById("glyphInput").value;
+<<<<<<< HEAD
         if (glyphs.toLowerCase() === "bsml") {
             fontPath = `fonts/${colorOption}/QCF_Bismillah_COLOR-Regular.ttf`;
         } else {
             fontPath = `fonts/${colorOption}/QCF4${fontNumber.padStart(3, '0')}_COLOR-Regular.ttf`;
         }
+=======
+        fontPath = `fonts/${colorOption}/QCF4${fontNumber}_COLOR-Regular.ttf`;
+>>>>>>> parent of 05aec10 (Update script.js)
     } else if (selectedOption === "surah") {
         const glyphSurah = document.getElementById("glyphSurah").value;
         glyphs = glyphSurah;
